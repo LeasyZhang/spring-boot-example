@@ -21,11 +21,19 @@ subprojects {
         mavenCentral()
     }
 
+    ext { springBootVersion = '2.0.8.RELEASE' }
+
     apply plugin: 'java'
+    apply plugin: 'org.springframework.boot' version '2.0.8.RELEASE'
+    apply plugin: 'io.spring.dependency-management' version '1.0.6.RELEASE'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 
     group = rootProject.group
     version = rootProject.version
+
+    dependencyManagement {
+        imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")}
+    }
 }
