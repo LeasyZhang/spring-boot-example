@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'com.example.boot'
+version '1.0-SNAPSHOT'
+description 'root'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+subprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    group = rootProject.group
+    version = rootProject.version
+}
