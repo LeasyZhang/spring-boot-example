@@ -1,7 +1,13 @@
 plugins {
-    
+    id 'java'
+    id 'org.springframework.boot' version '2.0.8.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
 }
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
+}
+
+dependencyManagement {
+    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")}
 }

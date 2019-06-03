@@ -1,2 +1,1 @@
-# spring-boot-example
-A collection of spring boot, spring cloud examples
+# spring-boot-web-example
