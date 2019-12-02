@@ -1,0 +1,3 @@
+app:
+  thirdParty:
+    url: http://localhost:8080/api/third/status
