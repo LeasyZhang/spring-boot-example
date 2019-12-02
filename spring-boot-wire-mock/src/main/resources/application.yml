@@ -1,0 +1,6 @@
+server:
+  port: 8080
+
+app:
+  thirdParty:
+    url: http://www.thidparty.com/api/third/status
