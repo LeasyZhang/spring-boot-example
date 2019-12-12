@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <Target>System.out</Target>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{ownerId}] %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Send to logstash -->
+    <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>127.0.0.1:5044</destination>
+        <reconnectionDelay>1 second</reconnectionDelay>
+        <waitStrategyType>blocking</waitStrategyType>
+        <ringBufferSize>65536</ringBufferSize>
+        <droppedWarnFrequency>2</droppedWarnFrequency>
+        <!-- encoder is required -->
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp/>
+                <arguments/>
+                <stackTrace/>
+                <pattern>
+                    <pattern>
+                        {
+                        "app_name": "Logstash-Example",
+                        "log_type": "APP_NAME",
+                        "log_level": "%level",
+                        "log_format": "plain",
+                        "thread": "%thread",
+                        "logger_name": "%logger",
+                        "message": "%msg",
+                        "userData": "#asJson{%marker}"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="stash"/>
+        <appender-ref ref="stdout"/>
+    </root>
+
+</configuration>
