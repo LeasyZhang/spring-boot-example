@@ -1,0 +1,8 @@
+version: "2.2"
+
+services:
+  spring-boot-logstash:
+    build:
+      context: .
+    ports:
+      - 5044:5044
