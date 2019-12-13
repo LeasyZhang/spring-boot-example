@@ -29,8 +29,7 @@
                         "log_format": "plain",
                         "thread": "%thread",
                         "logger_name": "%logger",
-                        "message": "%msg",
-                        "userData": "#asJson{%marker}"
+                        "message": "%msg"
                         }
                     </pattern>
                 </pattern>
