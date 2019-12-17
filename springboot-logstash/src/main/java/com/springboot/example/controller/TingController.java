@@ -22,6 +22,7 @@ public class TingController {
         data.setCount(12);
         data.setTimestamp(Instant.now());
 
+        logger.info("Access Ting Controller at " + Instant.now());
         logger.info("{}", new Gson().toJson(data));
 
         return data;
