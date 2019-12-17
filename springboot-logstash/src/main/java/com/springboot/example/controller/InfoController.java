@@ -1,6 +1,5 @@
 package com.springboot.example.controller;
 
-import com.google.gson.Gson;
 import com.springboot.example.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.Instant;
 
 import static net.logstash.logback.argument.StructuredArguments.keyValue;
-import static net.logstash.logback.marker.Markers.appendFields;
 
 @RestController
 public class InfoController {
@@ -42,8 +40,8 @@ public class InfoController {
         try {
             throw new Exception("woops!");
         } catch (Exception e) {
-            String jsonString = new Gson().toJson(user);
-            logger.error(appendFields(user), "Got error while access exception controller");
+            String errorLog = "Error happend on user " + user.getId();
+            logger.info("{} log message {}", keyValue("user", user), errorLog);
         }
         return response;
     }
