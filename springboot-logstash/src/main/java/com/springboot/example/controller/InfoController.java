@@ -1,5 +1,7 @@
 package com.springboot.example.controller;
 
+import com.google.gson.Gson;
+import com.springboot.example.exception.CustomException;
 import com.springboot.example.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,32 +19,20 @@ public class InfoController {
 
     @RequestMapping("/info")
     public String info() {
-        String accessLog = "Access to info controller at : " + Instant.now().toString();
+        String accessLog = "Access Info Controller at : " + Instant.now().toString();
 
         User user = new User();
         user.setId(31L);
         user.setName("joe.zhang");
 
         logger.info("{} log message {}", keyValue("user", user), accessLog);
-
+        //logger.info(new Gson().toJson(user));
         String response = "detailed info";
         return response;
     }
 
     @RequestMapping("/exception")
     public String exception() {
-        String response = "500 internal error";
-
-        User user = new User();
-        user.setId(31L);
-        user.setName("joe.zhang");
-
-        try {
-            throw new Exception("woops!");
-        } catch (Exception e) {
-            String errorLog = "Error happend on user " + user.getId();
-            logger.info("{} log message {}", keyValue("user", user), errorLog);
-        }
-        return response;
+        throw new CustomException();
     }
 }
