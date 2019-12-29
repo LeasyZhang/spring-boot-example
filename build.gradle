@@ -1,13 +1,11 @@
 plugins {
     id 'java'
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
 }
 
 group 'com.example.boot'
 version '1.0-SNAPSHOT'
 description 'root'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -18,16 +16,39 @@ tasks.withType(JavaCompile) {
 }
 
 subprojects {
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
     repositories {
         mavenCentral()
     }
 
-    ext { springBootVersion = '2.0.8.RELEASE' }
-
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    ext {
+        springBootVersion = '2.0.8.RELEASE'
+    }
 
     group = rootProject.group
     version = rootProject.version
-    
+
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'io.spring.dependency-management'
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        }
+
+        dependencies {
+            dependency 'com.google.code.gson:gson:2.8.6'
+            dependency 'com.squareup.okhttp3:okhttp:4.2.2'
+            dependency 'com.github.tomakehurst:wiremock:2.25.0'
+            dependency 'net.logstash.logback:logstash-logback-encoder:5.2'
+        }
+    }
+
+    dependencies {
+
+    }
 }
