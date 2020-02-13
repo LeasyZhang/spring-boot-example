@@ -12,4 +12,5 @@ include 'spring-boot-web-example'
 include 'springboot-embeded-active-mq'
 include 'spring-boot-wire-mock'
 include 'springboot-logstash'
+include 'springboot-swagger'
 
