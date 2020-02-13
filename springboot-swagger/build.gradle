@@ -1,0 +1,11 @@
+plugins {
+    id 'org.springframework.boot' version "$springBootVersion"
+}
+
+dependencies {
+    api('io.springfox:springfox-swagger2')
+    api('io.springfox:springfox-swagger-ui')
+    api('org.springframework.boot:spring-boot-starter-web')
+    api('io.springfox:springfox-bean-validators')
+    api('com.google.guava:guava')
+}
