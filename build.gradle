@@ -59,10 +59,7 @@ subprojects {
             dependency 'de.codecentric:chaos-monkey-spring-boot:2.1.1'
 
             dependency 'io.vavr:vavr-jackson:0.10.0'
+            dependency 'com.github.ben-manes.caffeine:caffeine:2.8.1'
         }
-    }
-
-    dependencies {
-
     }
 }
