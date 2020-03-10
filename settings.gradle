@@ -15,4 +15,5 @@ include 'springboot-logstash'
 include 'springboot-swagger'
 include 'springboot-security-jwt'
 include 'springboot-resilience4j'
+include 'springboot-cache'
 
