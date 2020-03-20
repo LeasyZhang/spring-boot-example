@@ -60,6 +60,10 @@ subprojects {
 
             dependency 'io.vavr:vavr-jackson:0.10.0'
             dependency 'com.github.ben-manes.caffeine:caffeine:2.8.1'
+            dependency 'com.google.protobuf:protobuf-java:3.11.4'
+            dependency 'com.googlecode.protobuf-java-format:protobuf-java-format:1.4'
+
+
         }
     }
 }
