@@ -16,4 +16,5 @@ include 'springboot-swagger'
 include 'springboot-security-jwt'
 include 'springboot-resilience4j'
 include 'springboot-cache'
+include 'spting-boot-rest-api-proto'
 
