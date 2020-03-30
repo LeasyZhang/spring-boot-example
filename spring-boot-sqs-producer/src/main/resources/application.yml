@@ -1,0 +1,18 @@
+server:
+  port: 8091
+aws:
+  queue:
+    url: https://sqs.us-east-1.amazonaws.com/435317259007/order-queue
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb?socketTimeout=90
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 0
+      connection-timeout: 50000
