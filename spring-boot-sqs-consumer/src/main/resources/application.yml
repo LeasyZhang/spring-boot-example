@@ -1,5 +1,5 @@
-server:
-  port: 8091
 aws:
-  queue:
+  fifo-queue:
     url: https://sqs.us-east-1.amazonaws.com/435317259007/price-queue.fifo
+  standard-queue:
+    url: https://sqs.us-east-1.amazonaws.com/435317259007/notification-queue

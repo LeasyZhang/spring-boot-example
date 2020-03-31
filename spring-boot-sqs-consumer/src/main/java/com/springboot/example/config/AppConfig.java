@@ -4,32 +4,39 @@ import com.amazonaws.ClientConfiguration;
 import com.amazonaws.Protocol;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
-import com.springboot.example.service.SqsConsumer;
+import com.springboot.example.service.FifoSqsConsumer;
+import com.springboot.example.service.StandardSqsConsumer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 @Configuration
-@EnableAsync
 public class AppConfig {
 
-    @Value("${aws.queue.url}")
+    @Value("${aws.fifo-queue.url}")
     private String queueUrl;
 
-    @Bean(name = "asyncTask")
+    @Value("${aws.standard-queue.url}")
+    private String standardQueueUrl;
+
+    @Bean(initMethod = "consume", destroyMethod = "stopConsume")
+    public FifoSqsConsumer sqsConsumer() {
+        return new FifoSqsConsumer(false, queueUrl, amazonSQS(amazonSQSClientBuilder()), 5, taskExecutor());
+    }
+
+    @Bean(initMethod = "consume", destroyMethod = "stopConsume")
+    public StandardSqsConsumer standardSqsConsumer() {
+        return new StandardSqsConsumer(false, standardQueueUrl, amazonSQS(amazonSQSClientBuilder()), 5, taskExecutor());
+    }
+
+    @Bean
     public ThreadPoolTaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(20);
         executor.setMaxPoolSize(50);
         executor.initialize();
         return executor;
-    }
-
-    @Bean(initMethod = "consume", destroyMethod = "destroy")
-    public SqsConsumer sqsConsumer() {
-        return new SqsConsumer(false, queueUrl, amazonSQS(amazonSQSClientBuilder()), 5);
     }
 
     @Bean
