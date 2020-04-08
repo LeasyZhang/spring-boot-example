@@ -5,6 +5,7 @@ import com.amazonaws.Protocol;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.springboot.example.service.NotificationQueueProducer;
+import com.springboot.example.service.PriceDeadQueueProducer;
 import com.springboot.example.service.PriceQueueProducer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -19,14 +20,25 @@ public class AppConfig {
     @Value("${aws.price-queue.url}")
     private String priceQueueUrl;
 
-    @Bean(initMethod = "seedData")
+    @Value("${aws.price-dead-queue.url}")
+    private String priceDeadQueueUrl;
+
+    //@Bean(initMethod = "seedData")
+    @Bean
     public NotificationQueueProducer notificationQueueProducer() {
         return new NotificationQueueProducer(amazonSQS(amazonSQSClientBuilder()), notificationQueueUrl);
     }
 
-    @Bean(initMethod = "seedDataBatch")
+    //    @Bean(initMethod = "seedDataBatch")
+    @Bean
     public PriceQueueProducer priceQueueProducer() {
         return new PriceQueueProducer(amazonSQS(amazonSQSClientBuilder()), priceQueueUrl);
+    }
+
+    //@Bean(initMethod = "seedDataBatch")
+    @Bean
+    public PriceDeadQueueProducer priceDeadQueueProducer() {
+        return new PriceDeadQueueProducer(amazonSQS(amazonSQSClientBuilder()), priceDeadQueueUrl);
     }
 
     @Bean

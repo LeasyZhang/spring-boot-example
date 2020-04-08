@@ -1,5 +1,7 @@
 aws:
   price-queue:
     url: https://sqs.us-east-1.amazonaws.com/435317259007/price-queue.fifo
+  price-dead-queue:
+    url: https://sqs.us-east-1.amazonaws.com/435317259007/price-dead-queue.fifo
   notification-queue:
     url: https://sqs.us-east-1.amazonaws.com/435317259007/notification-queue

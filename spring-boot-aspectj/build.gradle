@@ -1,0 +1,15 @@
+plugins {
+    id 'org.springframework.boot' version "$springBootVersion"
+}
+
+group 'com.example.boot'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api('org.springframework.boot:spring-boot-starter-web')
+    api('org.springframework.boot:spring-boot-starter-aop')
+}
