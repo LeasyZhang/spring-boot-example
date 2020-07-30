@@ -19,4 +19,5 @@ include 'springboot-cache'
 include 'spting-boot-rest-api-proto'
 include 'spring-boot-sqs-producer'
 include 'spring-boot-sqs-consumer'
+include 'spring-boot-retry'
 
