@@ -66,6 +66,11 @@ subprojects {
             dependency 'com.amazonaws:amazon-sqs-java-messaging-lib:1.0.8'
             dependency 'org.postgresql:postgresql:42.2.5'
             dependency 'org.apache.httpcomponents:httpclient:4.5.9'
+
+            dependency 'io.grpc:grpc-netty:1.1.2'
+            dependency 'io.grpc:grpc-protobuf:1.1.2'
+            dependency 'io.grpc:grpc-stub:1.1.2'
+            dependency 'io.grpc:grpc-services:1.1.2'
         }
     }
 }
