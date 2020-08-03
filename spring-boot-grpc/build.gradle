@@ -1,7 +1,11 @@
-plugins {
-    id 'java'
-    id 'application'
-    id 'com.google.protobuf'
+apply plugin: 'com.google.protobuf'
+apply plugin: 'application'
+
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
 }
 
 group 'com.example.boot'
@@ -10,21 +14,12 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-apply plugin: 'com.google.protobuf'
-apply plugin: 'application'
-
-apply plugin: 'java'
-
-repositories {
-    mavenCentral()
-}
-
 buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.1"
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.12"
     }
 }
 
@@ -34,4 +29,41 @@ dependencies {
     api('io.grpc:grpc-protobuf')
     api('io.grpc:grpc-stub')
     api('io.grpc:grpc-services')
+}
+
+sourceSets {
+    main {
+        proto {
+            srcDir 'src/main/proto'
+        }
+        java {
+            // include self written and generated code
+            srcDirs 'src/main/java', 'generated-sources/main/java', 'generated-sources/main/grpc'
+        }
+    }
+}
+
+mainClassName = "com.example.boot.GrpcServerApplication"
+
+protobuf {
+    // Configure the protoc executable
+    protoc {
+        // Download from repositories
+        artifact = 'com.google.protobuf:protoc:3.0.2'
+    }
+
+    // Configure the codegen plugins
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.1.2'
+        }
+    }
+
+    generateProtoTasks.generatedFilesBaseDir = 'generated-sources'
+
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
 }
