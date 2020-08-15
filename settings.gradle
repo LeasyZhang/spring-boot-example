@@ -23,4 +23,5 @@ include 'spring-boot-retry'
 include 'springboot-web-validate'
 include 'spring-boot-grpc'
 include 'spring-boot-s3-sns-producer'
+include 'spring-boot-kafka'
 
