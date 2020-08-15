@@ -73,6 +73,8 @@ subprojects {
             dependency "io.grpc:grpc-protobuf:${grpcVersion}"
             dependency "io.grpc:grpc-stub:${grpcVersion}"
             dependency "io.grpc:grpc-services:${grpcVersion}"
+            dependency 'org.springframework.kafka:spring-kafka:2.5.5.RELEASE'
+
         }
     }
 }
