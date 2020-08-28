@@ -74,6 +74,8 @@ subprojects {
             dependency "io.grpc:grpc-stub:${grpcVersion}"
             dependency "io.grpc:grpc-services:${grpcVersion}"
             dependency 'org.springframework.kafka:spring-kafka:2.5.5.RELEASE'
+            dependency 'org.springframework.shell:spring-shell-starter:2.0.0.RELEASE'
+
 
         }
     }
