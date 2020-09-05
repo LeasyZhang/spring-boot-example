@@ -1,0 +1,27 @@
+server:
+  port: 9090
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demo?socketTimeout=90
+    username: joe.zhang
+    password:
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 0
+      connection-timeout: 50000
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: true
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp

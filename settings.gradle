@@ -26,4 +26,5 @@ include 'spring-boot-s3-sns-producer'
 include 'spring-boot-kafka'
 include 'spring-boot-shell'
 include 'spring-bean-lifecycle'
+include 'spring-boot-thymleaf'
 
