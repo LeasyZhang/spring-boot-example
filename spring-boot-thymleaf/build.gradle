@@ -1,0 +1,16 @@
+plugins {
+    id 'org.springframework.boot' version "$springBootVersion"
+}
+
+dependencies {
+    api('org.springframework.boot:spring-boot-starter-web')
+    api('org.springframework.boot:spring-boot-starter-security')
+    api('org.springframework.boot:spring-boot-starter-thymeleaf')
+    api('org.springframework.boot:spring-boot-starter-data-jpa')
+    api('org.postgresql:postgresql')
+    api('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')
+
+    api('org.webjars:bootstrap')
+    api('org.webjars:jquery')
+    api('commons-beanutils:commons-beanutils')
+}

@@ -76,6 +76,9 @@ subprojects {
             dependency 'org.springframework.kafka:spring-kafka:2.5.5.RELEASE'
             dependency 'org.springframework.shell:spring-shell-starter:2.0.0.RELEASE'
 
+            dependency 'org.webjars:bootstrap:3.3.7'
+            dependency 'org.webjars:jquery:3.2.1'
+            dependency 'commons-beanutils:commons-beanutils:1.9.3'
         }
     }
 }
