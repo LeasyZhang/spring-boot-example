@@ -1,0 +1,1 @@
+insert into weather(id, temperature, description, created_time, updated_time) values(1,20.1, 'Cold','2020-11-24 13:49:09','2020-11-24 13:49:09');

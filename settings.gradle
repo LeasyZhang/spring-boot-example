@@ -27,4 +27,5 @@ include 'spring-boot-kafka'
 include 'spring-boot-shell'
 include 'spring-bean-lifecycle'
 include 'spring-boot-thymleaf'
+include 'spring-boot-test'
 
