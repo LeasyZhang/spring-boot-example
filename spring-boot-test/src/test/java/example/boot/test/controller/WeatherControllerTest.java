@@ -22,8 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @ActiveProfiles("dev")
 @AutoConfigureMockMvc
-@Sql("/weather.sql")
-@Sql(value = "/weather_rollback.sql", executionPhase = AFTER_TEST_METHOD)
+@Sql("/sql/weather.sql")
+@Sql(value = "/sql/weather_rollback.sql", executionPhase = AFTER_TEST_METHOD)
 public class WeatherControllerTest {
 
     @Autowired
