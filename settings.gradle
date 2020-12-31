@@ -31,4 +31,5 @@ include 'spring-boot-test'
 include 'redis-tool'
 include 'spring-boot-ratelimit'
 include 'spring-boot-mongo'
+include 'spring-boot-jpa-jsonb'
 
