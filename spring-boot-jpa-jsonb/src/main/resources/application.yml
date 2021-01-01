@@ -1,0 +1,60 @@
+server:
+  port: 8093
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+  shardingsphere:
+    datasource:
+      names: postgres
+      postgres:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: org.postgresql.Driver
+        jdbcUrl: jdbc:postgresql://localhost:5432/postgres?socketTimeout=300
+        username: postgres
+        password: root
+    sharding:
+      binding-tables: news
+      default-data-source-name: postgres
+      tables:
+        news:
+          actual-data-nodes: postgres.news_$->{0..2}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: news_${ id.longValue() % 3 }
+
+#
+#sharding:
+#  jdbc:
+#    datasource:
+#      postgres:
+#        type: com.zaxxer.hikari.HikariDataSource
+#        driver-class-name: org.postgresql.Driver
+#        url: jdbc:postgresql://localhost:5432/postgres?socketTimeout=300
+#        username: postgres
+#        password: root
+#
+#    config:
+#      sharding:
+#        default-database-strategy:
+#          inline:
+#            sharding-column: id
+#            algorithm-expression: postgres
+#        tables:
+#          rc_item:
+#            actual-data-nodes: postgres.news_$->{0..2}
+#            table-strategy:
+#              inline:
+#                sharding-column: id
+#                algorithm-expression: postgres.news_${ id.longValue() % 3 }
+#
+#        binding-tables: news
+#        default-data-source-name: postgres
