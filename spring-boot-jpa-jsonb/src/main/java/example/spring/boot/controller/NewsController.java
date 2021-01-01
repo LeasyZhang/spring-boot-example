@@ -1,6 +1,7 @@
 package example.spring.boot.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import example.spring.boot.model.Content;
 import example.spring.boot.model.News;
 import example.spring.boot.repo.NewsRepo;
@@ -38,7 +39,7 @@ public class NewsController {
         News news = News.builder()
                 .author("Joe Zhang")
                 .title("Main title")
-                .content(mapper.valueToTree(content))
+                .content(new Gson().toJson(content))
                 .build();
         newsRepo.save(news);
         return ResponseEntity.ok("Save success");

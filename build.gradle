@@ -82,6 +82,8 @@ subprojects {
             dependency group: 'com.vladmihalcea', name: 'hibernate-types-52', version: '2.4.3'
             dependency group: 'org.postgresql', name: 'postgresql', version: '42.2.12'
             dependency group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
+            dependency group: 'org.apache.shardingsphere', name: 'sharding-jdbc-spring-namespace', version: '4.0.0'
+            dependency group: 'org.apache.shardingsphere', name: 'sharding-jdbc-spring-boot-starter', version: '4.0.0'
         }
     }
 

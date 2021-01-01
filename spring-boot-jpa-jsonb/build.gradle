@@ -8,4 +8,6 @@ dependencies {
     api('com.vladmihalcea:hibernate-types-52')
     api('org.postgresql:postgresql')
     api('com.google.code.gson:gson')
+    api('org.apache.shardingsphere:sharding-jdbc-spring-boot-starter')
+    api('org.apache.shardingsphere:sharding-jdbc-spring-namespace')
 }

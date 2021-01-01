@@ -33,5 +33,5 @@ public class News implements Serializable {
 
     @Type(type = "jsonb")
     @Column(name = "content", columnDefinition = "jsonb")
-    private JsonNode content;
+    private String content;
 }
