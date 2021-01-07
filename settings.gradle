@@ -32,4 +32,5 @@ include 'redis-tool'
 include 'spring-boot-ratelimit'
 include 'spring-boot-mongo'
 include 'spring-boot-jpa-jsonb'
+include 'spring-boot-shardingsphere-jsonb'
 
