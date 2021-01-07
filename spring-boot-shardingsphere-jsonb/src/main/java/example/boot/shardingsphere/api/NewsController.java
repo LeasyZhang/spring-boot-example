@@ -1,9 +1,9 @@
-package example.spring.boot.controller;
+package example.boot.shardingsphere.api;
 
 import com.google.gson.Gson;
-import example.spring.boot.model.Content;
-import example.spring.boot.model.News;
-import example.spring.boot.repo.NewsRepo;
+import example.boot.shardingsphere.model.Content;
+import example.boot.shardingsphere.model.News;
+import example.boot.shardingsphere.repo.NewsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +38,7 @@ public class NewsController {
                 .title("Main title")
                 .content(new Gson().toJson(content))
                 .build();
-        newsRepo.save(news);
+        newsRepo.saveOne(news);
         return ResponseEntity.ok("Save success");
     }
 }
