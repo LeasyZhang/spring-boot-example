@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joke-api-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: joke-api
+        env: prod
+    spec:
+      containers:
+        - name: joke-api
+          image: joke-api:latest
+          ports:
+            - name: http-port
+              containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: joke-api-config
+          volumeMounts:
+            - name: logback-config-volume
+              mountPath: /etc/app
+      volumes:
+        - name: logback-config-volume
+          configMap:
+            name: logback-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: joke-api-service
+spec:
+  selector:
+    app: joke-api
+    env: prod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
