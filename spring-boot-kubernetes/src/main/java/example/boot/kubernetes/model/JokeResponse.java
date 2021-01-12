@@ -1,12 +1,9 @@
 package example.boot.kubernetes.model;
 
-import java.io.Serializable;
-import java.util.List;
-
 public class JokeResponse {
 
     private String type;
-    private List<Joke> value;
+    private Joke value;
 
     public String getType() {
         return type;
@@ -16,11 +13,11 @@ public class JokeResponse {
         this.type = type;
     }
 
-    public List<Joke> getValue() {
+    public Joke getValue() {
         return value;
     }
 
-    public void setValue(List<Joke> value) {
+    public void setValue(Joke value) {
         this.value = value;
     }
 }

@@ -4,9 +4,10 @@ plugins {
 
 dependencies {
     api('org.springframework.boot:spring-boot-starter-web')
-    api('org.springframework.boot:spring-boot-starter-data-jpa')
-    api('org.postgresql:postgresql')
+//    api('org.springframework.boot:spring-boot-starter-data-jpa')
+//    api('org.postgresql:postgresql')
     api('com.squareup.okhttp3:okhttp')
     api ('org.springframework.boot:spring-boot-starter-log4j2')
     api('com.google.code.gson:gson')
+    api('org.jetbrains.kotlin:kotlin-stdlib')
 }

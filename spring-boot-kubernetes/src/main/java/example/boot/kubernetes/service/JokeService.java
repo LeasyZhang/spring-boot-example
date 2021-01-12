@@ -7,6 +7,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -17,10 +18,12 @@ public class JokeService {
     private static final Logger logger = LoggerFactory.getLogger(JokeService.class);
 
     private static final OkHttpClient client = new OkHttpClient.Builder().build();
-    private static final String JOKE_API_BASE_URL = "https://api.icndb.com/jokes/";
+
+    @Value("${third-party-api.joke-api-endpoint}")
+    private String jokeAPIBase;
 
     public JokeResponse getJokeById(Long id) {
-        String destAddress = JOKE_API_BASE_URL + id;
+        String destAddress = jokeAPIBase + id;
 
         Request request = new Request.Builder()
                 .url(destAddress)
@@ -29,6 +32,7 @@ public class JokeService {
 
         try {
             Response response = client.newCall(request).execute();
+            logger.info("Get response from remote api {}", response.code());
             String responseBody = Objects.requireNonNull(response.body()).string();
             return new Gson().fromJson(responseBody, JokeResponse.class);
         } catch (IOException e) {
