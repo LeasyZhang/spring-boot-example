@@ -30,6 +30,12 @@ subprojects {
         grpcVersion = '1.31.0'
     }
 
+    configurations.all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        exclude group: 'ch.qos.logback', module: 'logback-core'
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+
     group = rootProject.group
     version = rootProject.version
 
@@ -84,6 +90,8 @@ subprojects {
             dependency group: 'org.projectlombok', name: 'lombok', version: '1.18.12'
             dependency group: 'io.shardingsphere', name: 'sharding-jdbc-spring-namespace', version: '3.0.0.M1'
             dependency group: 'io.shardingsphere', name: 'sharding-jdbc-spring-boot-starter', version: '3.0.0.M1'
+            dependency group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.3.1'
+            dependency 'org.jetbrains.kotlin:kotlin-stdlib:1.3.70'
         }
     }
 

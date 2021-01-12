@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joke-api-deployment
+spec:
+  selector:
+    matchLabels:
+      app: joke-api
+      env: prod
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: joke-api
+        env: prod
+    spec:
+      containers:
+        - name: joke-api
+          image: leasy/joke-api:latest
+          ports:
+            - name: http-port
+              containerPort: 9091
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: joke-api-service
+spec:
+  selector:
+    app: joke-api
+    env: prod
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9091
+  type: LoadBalancer
