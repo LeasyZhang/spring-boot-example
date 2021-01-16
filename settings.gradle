@@ -34,4 +34,5 @@ include 'spring-boot-mongo'
 include 'spring-boot-jpa-jsonb'
 include 'spring-boot-shardingsphere-jsonb'
 include 'spring-boot-kubernetes'
+include 'spring-boot-es'
 
