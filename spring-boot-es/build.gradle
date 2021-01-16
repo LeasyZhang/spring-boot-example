@@ -1,16 +1,8 @@
 plugins {
-    id 'java'
-}
-
-group 'com.example.boot'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
+    id 'org.springframework.boot' version "$springBootVersion"
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    api('org.springframework.boot:spring-boot-starter-web')
+    api('org.springframework.boot:spring-boot-starter-data-elasticsearch')
 }
