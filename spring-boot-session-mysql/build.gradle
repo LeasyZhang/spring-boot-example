@@ -6,8 +6,8 @@ dependencies {
     api('org.springframework.boot:spring-boot-starter-web')
     api('org.springframework.boot:spring-boot-starter-thymeleaf')
     api('org.springframework.boot:spring-boot-starter-security')
-    api('org.springframework.boot:spring-boot-starter-data-redis')
+    api('org.springframework.boot:spring-boot-starter-data-jpa')
     api('org.springframework.session:spring-session-core')
-    api('org.springframework.session:spring-session-data-redis')
-    api('redis.clients:jedis')
+    api('org.springframework.session:spring-session-jdbc')
+    api('mysql:mysql-connector-java')
 }
