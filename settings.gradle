@@ -36,4 +36,5 @@ include 'spring-boot-shardingsphere-jsonb'
 include 'spring-boot-kubernetes'
 include 'spring-boot-es'
 include 'spring-boot-session-redis'
+include 'spring-boot-session-mysql'
 
