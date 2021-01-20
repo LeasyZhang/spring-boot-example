@@ -1,0 +1,26 @@
+spring:
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always
+
+
+  datasource:
+    hikari:
+      connection-timeout: 10000
+      connection-test-query: select 1
+    url: jdbc:mysql://localhost:3306/spring-session-jdbc
+    username: root
+    password: 19950209
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+server:
+  port: 9096
