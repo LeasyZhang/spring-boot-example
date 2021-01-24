@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mysqldb:
+    image: mysql:${MYSQL_VERSION}
+    container_name: ${MYSQL_HOST}
+    restart: always
+    env_file:
+      - ".env"
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    healthcheck:
+      test: /usr/bin/mysql --host=127.0.0.1 --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} --silent --execute \"SELECT 1;\"
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    ports:
+      - "8989:3306"
+    volumes:
+      - "./data/db/mysql:/var/lib/mysql"
