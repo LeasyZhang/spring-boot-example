@@ -39,4 +39,5 @@ include 'spring-boot-session-redis'
 include 'spring-boot-session-mysql'
 include 'spring-boot-session-mongodb'
 include 'spring-boot-batch'
+include 'spring-boot-business-code'
 
