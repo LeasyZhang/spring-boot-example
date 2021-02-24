@@ -1,0 +1,11 @@
+plugins {
+    id 'org.springframework.boot' version "$springBootVersion"
+}
+
+dependencies {
+    api('org.springframework.boot:spring-boot-starter-web')
+    api('com.github.tomakehurst:wiremock')
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
