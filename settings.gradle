@@ -41,4 +41,5 @@ include 'spring-boot-session-mongodb'
 include 'spring-boot-batch'
 include 'spring-boot-business-code'
 include 'spring-boot-integration-test'
+include 'spring-boot-admin'
 
