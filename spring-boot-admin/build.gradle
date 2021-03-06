@@ -7,4 +7,5 @@ dependencies {
     api('de.codecentric:spring-boot-admin-starter-server')
     api('de.codecentric:spring-boot-admin-server-ui-login')
     api('org.springframework.boot:spring-boot-starter-security')
+    api('de.codecentric:spring-boot-admin-starter-client')
 }
