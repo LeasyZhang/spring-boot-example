@@ -25,7 +25,8 @@ subprojects {
     }
 
     ext {
-        springBootVersion = '2.4.0.RELEASE'
+        springBootVersion = '2.4.3'
+        springBootDepVersion = '2.4.3'
         resilience4jVersion = '1.3.1'
         grpcVersion = '1.31.0'
     }
@@ -45,7 +46,7 @@ subprojects {
 
     dependencyManagement {
         imports {
-            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootDepVersion}")
         }
 
         dependencies {
