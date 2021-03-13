@@ -13,4 +13,5 @@ dependencies {
     api('org.webjars:bootstrap')
     api('org.webjars:jquery')
     api('commons-beanutils:commons-beanutils')
+    api('jakarta.validation:jakarta.validation-api')
 }
