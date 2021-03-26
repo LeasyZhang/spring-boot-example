@@ -1,0 +1,9 @@
+plugins {
+    id 'org.springframework.boot' version "$springBootVersion"
+}
+
+dependencies {
+    api('org.springframework.boot:spring-boot-starter-webflux')
+    api('software.amazon.awssdk:sqs')
+    api('com.google.code.gson:gson')
+}
