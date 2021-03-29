@@ -6,4 +6,5 @@ dependencies {
     api('org.springframework.boot:spring-boot-starter-webflux')
     api('software.amazon.awssdk:sqs')
     api('com.google.code.gson:gson')
+    api('com.amazonaws:aws-java-sdk-sqs')
 }
