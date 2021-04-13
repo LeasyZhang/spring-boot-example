@@ -43,4 +43,5 @@ include 'spring-boot-business-code'
 include 'spring-boot-integration-test'
 include 'spring-boot-admin'
 include 'spring-boot-localstack'
+include 'spring-boot-flyway'
 
