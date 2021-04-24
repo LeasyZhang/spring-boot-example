@@ -1,0 +1,9 @@
+plugins {
+    id 'org.springframework.boot' version "$springBootVersion"
+}
+
+dependencies {
+    api('org.springframework.boot:spring-boot-starter-web')
+    api('org.springframework.data:spring-data-cassandra')
+    api('com.datastax.cassandra:cassandra-driver-core')
+}
