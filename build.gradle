@@ -100,6 +100,7 @@ subprojects {
             dependency 'de.codecentric:spring-boot-admin-starter-client:2.4.0'
             dependency 'software.amazon.awssdk:sqs:2.16.27'
             dependency 'com.datastax.cassandra:cassandra-driver-core:2.1.9'
+            dependency 'javax.servlet:javax.servlet-api:3.1.0'
         }
     }
 
