@@ -1,14 +1,11 @@
 buildscript {
-    ext {
-        springBootVersion = '2.4.3.RELEASE'
-    }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("org.jooq:jooq-codegen")
-        classpath("mysql:mysql-connector-java")
+        classpath("org.jooq:jooq-codegen:3.9.2")
+        classpath("mysql:mysql-connector-java:8.0.23")
     }
 }
 
@@ -44,7 +41,13 @@ def xml = new groovy.xml.MarkupBuilder(writer).configuration('xmlns': 'http://ww
         password('19950209')
     }
     generator() {
+        name() {
+            'org.jooq.meta.mysql.MySQLDatabase'
+        }
         database() {
+            inputSchema  'public'
+            include '.*'
+            excludes ''
         }
         // Watch out for this caveat when using MarkupBuilder with "reserved names"
         // - https://github.com/jOOQ/jOOQ/issues/4797
@@ -55,8 +58,8 @@ def xml = new groovy.xml.MarkupBuilder(writer).configuration('xmlns': 'http://ww
             daos true
         }
         target() {
-            packageName('example.jooq')
-            directory('src/main/java')
+            packageName('example.jooq.databases')
+            directory('spring-boot-jooq/src/main/java')
         }
     }
 }
