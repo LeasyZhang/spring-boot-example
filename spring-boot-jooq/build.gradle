@@ -35,6 +35,7 @@ dependencies {
     runtime('org.springframework.boot:spring-boot-devtools')
     runtime('mysql:mysql-connector-java')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    jooqGenerator('mysql:mysql-connector-java:8.0.23')
 }
 
 //def writer = new StringWriter()
@@ -99,47 +100,45 @@ dependencies {
 //    }
 //}
 
-//jooq {
-//    version = '3.14.7'
-//    edition = JooqEdition.OSS
-//
-//    configurations {
-//        main {
-//            generationTool {
-//                logging = org.jooq.meta.jaxb.Logging.WARN
-//                jdbc {
-//                    driver = 'com.mysql.cj.jdbc.Driver'
-//                    url = 'jdbc:mysql://localhost:3306/mydb'
-//                    user = 'root'
-//                    password = '19950209'
-//                    properties {
-//                        property {
-//                            key = 'PAGE_SIZE'
-//                            value = 2048
-//                        }
-//                    }
-//                }
-//                generator {
-//                    name = 'org.jooq.codegen.DefaultGenerator'
-//                    database {
-//                        name = 'org.jooq.meta.mysql.MySQLDatabase'
-//
-//                    }
-//                    generate {
-//                        deprecated = false
-//                        records = false
-//                        pojos = true
-//                        daos = true
-//                        immutablePojos = false
-//                        fluentSetters = false
-//                    }
-//                    target {
-//                        packageName = 'example.jooq.databases'
-//                        directory = 'spring-boot-jooq/src/main/java'
-//                    }
-//                    strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
-//                }
-//            }
-//        }
-//    }
-//}
+jooq {
+    version = '3.14.7'
+    edition = JooqEdition.OSS
+
+    configurations {
+        main {
+            generationTool {
+                logging = org.jooq.meta.jaxb.Logging.WARN
+                jdbc {
+                    driver = 'com.mysql.cj.jdbc.Driver'
+                    url = 'jdbc:mysql://localhost:3306/mydb'
+                    user = 'root'
+                    password = '19950209'
+                    properties {
+                    }
+                }
+                generator {
+                    name = 'org.jooq.codegen.DefaultGenerator'
+                    database {
+                        name = 'org.jooq.meta.mysql.MySQLDatabase'
+                        includes = '.*'
+                        excludes = 'UNUSED_TABLE'
+                        inputSchema = 'mydb'
+                    }
+                    generate {
+                        deprecated = false
+                        records = false
+                        pojos = true
+                        daos = true
+                        immutablePojos = true
+                        fluentSetters = true
+                    }
+                    target {
+                        packageName = 'example.jooq.databases'
+                        directory = 'src/main/java'
+                    }
+                    strategy.name = "org.jooq.codegen.DefaultGeneratorStrategy"
+                }
+            }
+        }
+    }
+}
