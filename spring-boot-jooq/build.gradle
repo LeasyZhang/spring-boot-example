@@ -38,68 +38,6 @@ dependencies {
     jooqGenerator('mysql:mysql-connector-java:8.0.23')
 }
 
-//def writer = new StringWriter()
-//def xml = new groovy.xml.MarkupBuilder(writer).configuration('xmlns': 'http://www.jooq.org/xsd/jooq-codegen-3.14.0.xsd') {
-//    jdbc() {
-//        driver('com.mysql.cj.jdbc.Driver')
-//        url('jdbc:mysql://localhost:3306/mydb')
-//        user('root')
-//        password('19950209')
-//    }
-//    generator() {
-//        database() {
-//            inputSchema 'public'
-//            include '.*'
-//            excludes ''
-//        }
-//        generate([:]) {
-//            pojos true
-//            daos true
-//        }
-//        target() {
-//            packageName('example.jooq.databases')
-//            directory('spring-boot-jooq/src/main/java')
-//        }
-//    }
-//}
-//org.jooq.util.GenerationTool.generate(
-//        javax.xml.bind.JAXB.unmarshal(new StringReader(writer.toString()), org.jooq.util.jaxb.Configuration.class)
-//)
-
-//
-//task generate {
-//    doLast {
-//        def writer = new StringWriter()
-//        def xml = new groovy.xml.MarkupBuilder(writer).configuration('xmlns': 'http://www.jooq.org/xsd/jooq-codegen-3.14.0.xsd') {
-//            jdbc() {
-//                driver('com.mysql.cj.jdbc.Driver')
-//                url('jdbc:mysql://localhost:3306/mydb')
-//                user('root')
-//                password('19950209')
-//            }
-//            generator() {
-//                database() {
-//                    inputSchema  'public'
-//                    include '.*'
-//                    excludes ''
-//                }
-//                generate([:]) {
-//                    pojos true
-//                    daos true
-//                }
-//                target() {
-//                    packageName('example.jooq.databases')
-//                    directory('spring-boot-jooq/src/main/java')
-//                }
-//            }
-//        }
-//
-//        org.jooq.util.GenerationTool.generate(
-//                javax.xml.bind.JAXB.unmarshal(new StringReader(writer.toString()), org.jooq.util.jaxb.Configuration.class)
-//        )
-//    }
-//}
-
 jooq {
     version = '3.14.7'
     edition = JooqEdition.OSS
