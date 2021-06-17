@@ -1,0 +1,66 @@
+buildscript {
+    ext {
+        springBootVersion = '2.4.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.jooq:jooq-codegen")
+        classpath("mysql:mysql-connector-java")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    api('org.springframework.boot:spring-boot-starter-jooq')
+    api('org.springframework.boot:spring-boot-starter-web')
+    api('org.jooq:jooq-codegen')
+    runtime('org.springframework.boot:spring-boot-devtools')
+    runtime('mysql:mysql-connector-java')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+// Use your favourite XML builder to construct the code generation configuration file
+// ----------------------------------------------------------------------------------
+def writer = new StringWriter()
+def xml = new groovy.xml.MarkupBuilder(writer).configuration('xmlns': 'http://www.jooq.org/xsd/jooq-codegen-3.9.2.xsd') {
+    jdbc() {
+        driver('com.mysql.cj.jdbc.Driver')
+        url('jdbc:mysql://localhost:3306/mydb')
+        user('root')
+        password('19950209')
+    }
+    generator() {
+        database() {
+        }
+        // Watch out for this caveat when using MarkupBuilder with "reserved names"
+        // - https://github.com/jOOQ/jOOQ/issues/4797
+        // - http://stackoverflow.com/a/11389034/521799
+        // - https://groups.google.com/forum/#!topic/jooq-user/wi4S9rRxk4A
+        generate([:]) {
+            pojos true
+            daos true
+        }
+        target() {
+            packageName('example.jooq')
+            directory('src/main/java')
+        }
+    }
+}
+
+org.jooq.util.GenerationTool.generate(
+        javax.xml.bind.JAXB.unmarshal(new StringReader(writer.toString()), org.jooq.util.jaxb.Configuration.class)
+)
