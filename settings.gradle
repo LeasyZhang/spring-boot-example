@@ -47,4 +47,5 @@ include 'spring-boot-flyway'
 include 'spring-boot-cassandra'
 include 'spring-boot-wildfly'
 include 'spring-boot-jooq'
+include 'spring-boot-db-scheduler'
 
