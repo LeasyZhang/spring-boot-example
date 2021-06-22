@@ -102,6 +102,7 @@ subprojects {
             dependency 'com.datastax.cassandra:cassandra-driver-core:2.1.9'
             dependency 'javax.servlet:javax.servlet-api:3.1.0'
             dependency 'org.jooq:jooq-codegen:3.14.7'
+            dependency 'com.github.kagkarlsson:db-scheduler-spring-boot-starter:10.3'
         }
     }
 

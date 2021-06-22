@@ -1,0 +1,11 @@
+plugins {
+    id 'org.springframework.boot' version "$springBootVersion"
+}
+
+dependencies {
+    api('org.springframework.boot:spring-boot-starter-web')
+    api('com.github.kagkarlsson:db-scheduler-spring-boot-starter')
+    runtime('mysql:mysql-connector-java')
+    api('org.springframework.boot:spring-boot-starter-data-jpa')
+    api('org.springframework.boot:spring-boot-starter-actuator')
+}
