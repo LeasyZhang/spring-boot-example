@@ -1,4 +1,2 @@
 server:
-  servlet:
-    context-path: /queue
   port: 8081
