@@ -103,6 +103,7 @@ subprojects {
             dependency 'javax.servlet:javax.servlet-api:3.1.0'
             dependency 'org.jooq:jooq-codegen:3.14.7'
             dependency 'com.github.kagkarlsson:db-scheduler-spring-boot-starter:10.3'
+            dependency 'org.apache.pulsar:pulsar-client:2.1.1-incubating'
         }
     }
 
