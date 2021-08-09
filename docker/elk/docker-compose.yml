@@ -1,0 +1,44 @@
+version: "3"
+services:
+  elasticsearch:
+    image: "docker.elastic.co/elasticsearch/elasticsearch:7.6.2"
+    environment:
+      - cluster.name=es-cluster
+      - node.name=es-node-1
+      - path.data=/usr/share/elasticsearch/data
+      - http.port=9200
+      - http.host=0.0.0.0
+      - transport.host=127.0.0.1
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    mem_limit: 2g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      # ES data dir mount to local drive
+      - /Users/joe.zhang/elkdata/:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  kibana:
+    image: "docker.elastic.co/kibana/kibana:7.6.2"
+    ports:
+      - "5601:5601"
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
+  logstash:
+    image: "docker.elastic.co/logstash/logstash:7.0.1"
+    ports:
+      - "5044:5044"
+    links:
+      - elasticsearch
+    volumes:
+      - ./:/config-dir
+    command: logstash -f /config-dir/logstash.conf
+    depends_on:
+      - elasticsearch
