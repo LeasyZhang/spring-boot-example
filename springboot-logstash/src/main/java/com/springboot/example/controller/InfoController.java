@@ -1,6 +1,5 @@
 package com.springboot.example.controller;
 
-import com.google.gson.Gson;
 import com.springboot.example.exception.CustomException;
 import com.springboot.example.model.User;
 import org.slf4j.Logger;
