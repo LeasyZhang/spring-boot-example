@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30" shutdownHook="disable">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%-5p|%d{ISO8601}{GMT}|%X{token}|%c{1}|%m%ex%n"/>
+        </Console>
+
+        <Gelf name="gelf"
+              host="localhost"
+              port="5044"
+              version="1.0"
+              extractStackTrace="true"
+              filterStackTrace="true"
+              mdcProfiling="true"
+              includeFullMdc="true"
+              maximumMessageSize="8192"
+              originHost="localhost"
+              ignoreExceptions="true">
+            <Field name="timestamp"
+                   pattern="%d{dd MMM yyyy HH:mm:ss,SSS}"/>
+            <Field name="level"
+                   pattern="%level"/>
+            <Field name="simpleClassName"
+                   pattern="%C{1}"/>
+            <Field name="className"
+                   pattern="%C"/>
+            <Field name="application"
+                   literal="${applicationName}"/>
+            <Field name="message"
+                   pattern="%msg"/>
+            <Field name="app_name"
+                   pattern="custom-logstash"/>
+        </Gelf>
+    </Appenders>
+    <Loggers>
+        <Root level="WARN">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="gelf"/>
+        </Root>
+        <Logger name="org.springframework" level="WARN"/>
+        <Logger name="com.springboot.example" level="INFO"/>
+    </Loggers>
+</Configuration>
