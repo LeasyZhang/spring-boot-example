@@ -50,4 +50,5 @@ include 'spring-boot-jooq'
 include 'spring-boot-db-scheduler'
 include 'spring-boot-pulsar'
 include 'spring-boot-arthas'
+include 'spring-boot-actuator'
 
